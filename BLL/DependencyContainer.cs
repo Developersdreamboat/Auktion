@@ -12,6 +12,8 @@ namespace Business_Logic_Layer
             var mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);
             services.AddTransient<UserService>();
+            services.AddTransient<LotService>();
+            services.AddTransient<AuctionService>();
             return services;
         }
     }
