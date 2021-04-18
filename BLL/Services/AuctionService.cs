@@ -7,10 +7,11 @@ using Data_Access_Layer;
 using Data_Access_Layer.Entities;
 using Business_Logic_Layer.Models;
 using Microsoft.EntityFrameworkCore;
+using Business_Logic_Layer.Abstract;
 
 namespace Business_Logic_Layer.Services
 {
-    public class AuctionService
+    public class AuctionService : IAuctionService
     {
         private readonly AuctionDbContext _dbContext;
         private readonly IMapper _mapper;
