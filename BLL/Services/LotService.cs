@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text;
@@ -29,14 +30,25 @@ namespace Business_Logic_Layer.Services
         {
             return _mapper.Map<LotDto>(await _dbContext.Lots.FindAsync(id));
         }
-        public async Task<IEnumerable<LotDto>> GetAllAsync()
+        public IEnumerable<LotDto> GetByAuctionId(int id) 
         {
-            var lots = await _dbContext.Lots.ToListAsync();
+            var lots = _dbContext.Lots.AsNoTracking().ToList().Where(x => x.AuctionId == id);
             return _mapper.Map<IEnumerable<LotDto>>(lots);
         }
-        public async Task UpdateAsync()
+        public IEnumerable<LotDto> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var lots = _dbContext.Lots;
+            return _mapper.Map<IEnumerable<LotDto>>(lots);
+        }
+        public void UpdateBidAsync(int lotId, int userId, int bidValue)
+        {
+            var bid = _dbContext.Lots.FindAsync(lotId);
+            if (bid.Result.Price <= bidValue && bid.Result.Expiring >= DateTime.Now) 
+            {
+                bid.Result.Price = bidValue;
+                bid.Result.BidUserId = userId;
+                _dbContext.SaveChangesAsync();
+            }
         }
         public async Task DeleteAsync(int id)
         {

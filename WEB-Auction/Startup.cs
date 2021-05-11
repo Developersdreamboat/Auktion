@@ -11,6 +11,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business_Logic_Layer.Services;
 using Business_Logic_Layer;
+using AutoMapper;
+using Business_Logic_Layer.Abstract;
 using Business_Logic_Layer.Models;
 using Data_Access_Layer;
 
@@ -30,8 +32,14 @@ namespace Auktion
         {
             string connection = Configuration.GetConnectionString("AuctionConnection");
             services.AddDbContext<AuctionDbContext>(options => options.UseSqlServer(connection));
-            services.AddControllersWithViews();
-            services.RegisterDependencies();
+            services.AddControllersWithViews(); 
+            var mapperConfiguration = new MapperConfiguration(c => c.AddProfile(new MapperConfigurationClass()));
+            var mapper = mapperConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ILotService, LotService>();
+            services.AddTransient<IAuctionService, AuctionService>();
+            //services.RegisterDependencies();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => //CookieAuthenticationOptions
                 {
             options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");

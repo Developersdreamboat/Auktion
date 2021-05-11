@@ -1,0 +1,26 @@
+﻿@model WEB_Auction.Models.LotModel
+
+<h2>Создать лот</h2>
+<form asp-action="Add" asp-controller="Lot" asp-anti-forgery="true">
+    <div>
+        <div>
+            <label asp-for="Name">Введите название</label><br />
+            <input type="text" asp-for="Name" />
+        </div>
+        <div>
+            <label asp-for="Description">Введите описание</label><br />
+            <input asp-for="Description" />
+        </div>
+        <div>
+            <label asp-for="Bid">Введите начальную сумму</label><br />
+            <input asp-for="Bid" />
+        </div>
+        <div>
+            <label asp-for="Expiring">Введите дату окончания аукциона</label><br />
+            <input asp-for="Expiring" />
+        </div>
+        <div>
+            <input type="submit" value="Создать" />
+        </div>
+    </div>
+</form>

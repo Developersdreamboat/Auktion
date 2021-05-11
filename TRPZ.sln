@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEB-Auction", "WEB-Auction\WEB-Auction.csproj", "{F2ECE7FB-B93E-4A32-9B35-F8BCF3490E73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WEB-Auction", "WEB-Auction\WEB-Auction.csproj", "{F2ECE7FB-B93E-4A32-9B35-F8BCF3490E73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{26015AE5-9E91-47B7-A656-28641CC329A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{26015AE5-9E91-47B7-A656-28641CC329A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{E0B648FA-09CC-492B-9EAB-21B9761B861A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{E0B648FA-09CC-492B-9EAB-21B9761B861A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

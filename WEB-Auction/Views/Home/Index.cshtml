@@ -3,6 +3,10 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <ul class="all auctions">
+        <li>@Html.ActionLink("Все аукционы", "Index", "Auction")</li>
+    </ul>
+    <ul class="create auction">
+    <li>@Html.ActionLink("Создать аукцион", "Add", "Auction")</li>
+</ul>
 </div>

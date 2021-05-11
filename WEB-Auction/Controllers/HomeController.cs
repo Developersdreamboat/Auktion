@@ -22,10 +22,14 @@ namespace Auktion.Controllers
         public IActionResult Index()
         {
             //return View();
-            return Content(User.Identity.Name);
+            return View();
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult ShowAuctions() 
         {
             return View();
         }

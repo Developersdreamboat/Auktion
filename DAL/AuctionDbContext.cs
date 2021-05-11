@@ -9,7 +9,6 @@ namespace Data_Access_Layer
     {
         public AuctionDbContext(DbContextOptions<AuctionDbContext> options) : base(options)
         {
-           // Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         public DbSet<User> Users { get; set; }

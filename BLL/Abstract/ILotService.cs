@@ -9,8 +9,9 @@ namespace Business_Logic_Layer.Abstract
     {
         public Task AddAsync(LotDto lot);
         public Task<LotDto> GetByIdAsync(int id);
-        public Task<IEnumerable<LotDto>> GetAllAsync();
-        public Task UpdateAsync();
+        public IEnumerable<LotDto> GetAllAsync();
+        public IEnumerable<LotDto> GetByAuctionId(int id);
+        public void UpdateBidAsync(int lotId, int userId, int bidValue);
         public Task DeleteAsync(int id);
     }
 }

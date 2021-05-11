@@ -8,13 +8,14 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Auktion.Models;
 using Business_Logic_Layer.Models;
 using Business_Logic_Layer.Services;
+using Business_Logic_Layer.Abstract;
 
-namespace Auktion.Controllers
+namespace WEB_Auction.Controllers
 {
     public class AccountController : Controller
     {
-        private UserService _service;
-        public AccountController(UserService service)
+        private IUserService _service;
+        public AccountController(IUserService service)
         {
             _service = service;
         }

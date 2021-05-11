@@ -10,7 +10,8 @@ namespace Business_Logic_Layer.Abstract
     {
         public Task AddAsync(UserDto user);
         public Task<UserDto> GetByIdAsync(int id);
-        public Task<IEnumerable<UserDto>> GetAllAsync();
+        public Task<UserDto> GetByEmail(string email);
+        public IEnumerable<UserDto> GetAllAsync();
         public Task<UserDto> FirstOrDefaultAsync(string email, string password);
         public Task UpdateAsync();
         public Task DeleteAsync(int id);

@@ -29,9 +29,14 @@ namespace Business_Logic_Layer.Services
         {
             return _mapper.Map<UserDto>(await _dbContext.Users.FindAsync(id));
         }
-        public async Task<IEnumerable<UserDto>> GetAllAsync()
+        public async Task<UserDto> GetByEmail(string email) 
         {
-            var users = await _dbContext.Users.ToListAsync();
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
+            return _mapper.Map<UserDto>(user);
+        }
+        public IEnumerable<UserDto> GetAllAsync()
+        {
+            var users = _dbContext.Users.ToListAsync();
             return _mapper.Map<IEnumerable<UserDto>>(users);
         }
         public async Task<UserDto> FirstOrDefaultAsync(string email, string password) 

@@ -1,0 +1,13 @@
+﻿@using Business_Logic_Layer.Models;
+@model WEB_Auction.Models.AuctionModel
+
+@foreach (var a in Model.Auctions)
+{
+<tr>
+    <td><p>ID:@a.Id</p></td>
+    <td><p>Название аукциона:@a.Name</p></td>
+    <td><p>Описание аукциона:@a.Description</p></td>
+    @Html.ActionLink("Показать", "Index","Lot", new { id = a.Id })
+    @Html.ActionLink("Добавить лот", "Add","Lot", new { id = a.Id })
+</tr>
+}

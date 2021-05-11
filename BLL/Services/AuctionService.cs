@@ -20,9 +20,9 @@ namespace Business_Logic_Layer.Services
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task AddAsync(AuctionDto category) 
+        public async Task AddAsync(AuctionDto auction) 
         {
-            await _dbContext.Auctions.AddAsync(_mapper.Map<Auction>(category));
+            await _dbContext.Auctions.AddAsync(_mapper.Map<Auction>(auction));
             await _dbContext.SaveChangesAsync();
         }
         public async Task<AuctionDto> GetByIdAsync(int id) 
@@ -31,8 +31,8 @@ namespace Business_Logic_Layer.Services
         }
         public async Task<IEnumerable<AuctionDto>> GetAllAsync()
         {
-            var categories = await _dbContext.Auctions.ToListAsync();
-            return _mapper.Map<IEnumerable<AuctionDto>>(categories);
+            var auctions = await _dbContext.Auctions.ToListAsync();
+            return _mapper.Map<IEnumerable<AuctionDto>>(auctions);
         }
         public async Task UpdateAsync() 
         {
@@ -40,8 +40,8 @@ namespace Business_Logic_Layer.Services
         }
         public async Task DeleteAsync(int id)
         {
-            var category = await _dbContext.Auctions.FindAsync(id);
-            _dbContext.Auctions.Remove(category);
+            var auction = await _dbContext.Auctions.FindAsync(id);
+            _dbContext.Auctions.Remove(auction);
             await _dbContext.SaveChangesAsync();
         }
     }

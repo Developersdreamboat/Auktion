@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using Business_Logic_Layer.Models;
 
-namespace Business_Logic_Layer.Models
+namespace WEB_Auction.Models
 {
-    public class LotDto
+    public class LotModel
     {
-        public int Id { get; set; }
+        public LotModel() { }
+        public LotModel(IEnumerable<LotDto> lots) 
+        {
+            Lots = lots;
+        }
+        public IEnumerable<LotDto> Lots { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
         public int Bid { get; set; }
-        public int BidUserId { get; set; }
+        public string BidUser { get; set; }
         public DateTime Expiring { get; set; }
         public int AuctionId { get; set; }
         public string User { get; set; }
