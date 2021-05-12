@@ -36,7 +36,7 @@ namespace Business_Logic_Layer.Services
         }
         public IEnumerable<UserDto> GetAllAsync()
         {
-            var users = _dbContext.Users.ToListAsync();
+            var users = _dbContext.Users.ToListAsync().Result;
             return _mapper.Map<IEnumerable<UserDto>>(users);
         }
         public async Task<UserDto> FirstOrDefaultAsync(string email, string password) 

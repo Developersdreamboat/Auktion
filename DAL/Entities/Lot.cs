@@ -12,6 +12,5 @@ namespace Data_Access_Layer.Entities
         public int BidUserId { get; set; }
         public DateTime Expiring { get; set; }
         public int AuctionId { get; set; }
-        public Auction Auction { get; set; }
     }
 }
