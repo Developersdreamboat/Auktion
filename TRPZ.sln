@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{E0B648FA-09CC-492B-9EAB-21B9761B861A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{76EDDE04-B502-466A-B97C-C7B9C77DE128}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{76EDDE04-B502-466A-B97C-C7B9C77DE128}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{9F91A70A-535A-46FC-99DF-F128C25638E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{9F91A70A-535A-46FC-99DF-F128C25638E9}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{139B93A0-849F-46D2-9AB8-FA327E390005}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9F91A70A-535A-46FC-99DF-F128C25638E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F91A70A-535A-46FC-99DF-F128C25638E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F91A70A-535A-46FC-99DF-F128C25638E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{139B93A0-849F-46D2-9AB8-FA327E390005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139B93A0-849F-46D2-9AB8-FA327E390005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139B93A0-849F-46D2-9AB8-FA327E390005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139B93A0-849F-46D2-9AB8-FA327E390005}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
