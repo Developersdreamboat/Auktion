@@ -3,12 +3,13 @@
 
 @foreach (var l in Model.Lots)
 {
-<tr>
-    <td><p>ID:@l.Id</p></td>
-    <td><p>Название лота:@l.Name</p></td>
-    <td><p>Описание лота:@l.Description</p></td>
-    <td><p>Текущая цена лота:@l.Price</p></td>
-    <td><p>Истекает в:@l.Expiring</p></td>
-    @Html.ActionLink("Выбрать лот", "MakeBid", "Lot", new { id = l.Id })
-</tr>
+    <img src="@l.ImgUrl">
+    <tr>
+        <td><p>Название лота:@l.Name</p></td>
+        <td><p>Описание лота:@l.Description</p></td>
+        <td><p>Текущая цена лота:@l.Price</p></td>
+        <td><p>Истекает в:@l.Expiring</p></td>
+        @Html.ActionLink("Выбрать лот", "MakeBid", "Lot", new { id = l.Id })
+    </tr>
+    <br>
 }

@@ -27,10 +27,20 @@ namespace WEB_Auction.Controllers
         [HttpPost]
         public IActionResult Add(AuctionCreateModel model)
         {
-            userName = User.Identity.Name;
-            var user = _userService.GetByEmail(userName);
-            var id = user.Result.Id;
-            _auctionService.AddAsync(new AuctionDto { Name=model.Name, Description=model.Description, CreatedAt=DateTime.Now, UserId = id});
+            if (ModelState.IsValid)
+            {
+                    userName = User.Identity.Name;
+                    var user = _userService.GetByEmail(userName);
+                    var id = user.Result.Id;
+                    _auctionService.AddAsync(new AuctionDto
+                    {
+                        Name = model.Name,
+                        Description = model.Description
+                        ,
+                        CreatedAt = DateTime.Now,
+                        UserId = id
+                    });
+            }
             return View(model);
         }
         public IActionResult Index() 

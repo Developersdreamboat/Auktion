@@ -17,6 +17,7 @@ namespace WEB_Auction.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+        public string ImgUrl { get; set; }
         public int Bid { get; set; }
         public string BidUser { get; set; }
         public DateTime Expiring { get; set; }
