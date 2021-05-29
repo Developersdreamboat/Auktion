@@ -1,0 +1,14 @@
+﻿@using Business_Logic_Layer.Models;
+@model WEB_Auction.Models.LotModel
+
+@foreach (var l in Model.Lots)
+{
+    <img src="@l.ImgUrl">
+    <tr>
+        <td><p>Название лота:@l.Name</p></td>
+        <td><p>E-mail победителя:@l.BidUserEmail</p></td>
+        <td><p>Последняя ставка:@l.Price</p></td>
+        <td><p>Истёк в:@l.Expiring</p></td>
+    </tr>
+    <br>
+}

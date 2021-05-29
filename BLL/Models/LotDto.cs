@@ -12,6 +12,7 @@ namespace Business_Logic_Layer.Models
         public string ImgUrl { get; set; }
         public float Price { get; set; }
         public int BidUserId { get; set; }
+        public string BidUserEmail { get; set; }
         public DateTime Expiring { get; set; }
         public int AuctionId { get; set; }
     }

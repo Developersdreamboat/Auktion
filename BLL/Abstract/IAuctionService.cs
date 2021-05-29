@@ -11,6 +11,7 @@ namespace Business_Logic_Layer.Abstract
         public Task AddAsync(AuctionDto category);
         public Task<AuctionDto> GetByIdAsync(int id);
         public Task<IEnumerable<AuctionDto>> GetAllAsync();
+        public IEnumerable<AuctionDto> GetAllByCreator(int id);
         public Task UpdateAsync();
         public Task DeleteAsync(int id);
     }

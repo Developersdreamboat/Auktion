@@ -6,6 +6,9 @@
 <form asp-action="MakeBid" asp-controller="Lot" asp-anti-forgery="true">
     <div>
         <div>
+            <br>
+            <div>@ViewBag.Error</div>
+            <br>
             <label asp-for="BidValue">Введите значение</label><br />
             <input type="text" asp-for="BidValue" />
         </div>

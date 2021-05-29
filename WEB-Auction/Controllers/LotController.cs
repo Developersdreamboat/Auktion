@@ -29,8 +29,16 @@ namespace WEB_Auction.Controllers
         [HttpGet]
         public ActionResult Index(int id) 
         {
-            var list = _lotService.GetByAuctionId(id);
-            LotModel model = new LotModel(list);
+            var fullList = _lotService.GetByAuctionId(id);
+            var actualList = new List<LotDto>();
+            foreach (var l in fullList) 
+            {
+                if (l.Expiring > DateTime.Now) 
+                {
+                    actualList.Add(l);
+                }
+            }
+            LotModel model = new LotModel(actualList);
             return View(model);
         }
         [HttpGet]
@@ -61,11 +69,43 @@ namespace WEB_Auction.Controllers
         [HttpPost]
         public async Task<ActionResult> MakeBid(BidModel model)
         {
-            string bidUserName = User.Identity.Name;
-            var user = await _userService.GetByEmail(bidUserName);
-            var id = user.Id;
-            var lotId = Convert.ToInt32(RouteData.Values["id"]);
-            _lotService.UpdateBidAsync(lotId, id, model.BidValue);
+            if (ModelState.IsValid)
+            {
+                var lotId = Convert.ToInt32(RouteData.Values["id"]);
+                var auctionId = _lotService.GetByIdAsync(lotId).Result.AuctionId;
+                var auctionCreator = _auctionService.GetByIdAsync(auctionId).Result.UserId;
+                var userName = _userService.GetByIdAsync(auctionCreator).Result.Email;
+                if (userName != User.Identity.Name)
+                {
+                    var user = await _userService.GetByEmail(User.Identity.Name);
+                    var id = user.Id;
+                    _lotService.UpdateBidAsync(lotId, id, model.BidValue);
+                    return RedirectToAction("Index", "Auction");
+                }
+            }
+            ViewBag.Error = "Организатор аукциона не может делать ставку";
+            return View(model);
+        }
+        [HttpGet]
+        public ActionResult ShowFinishedLots()
+        {
+            var user =  _userService.GetByEmail(User.Identity.Name).Result.Id;
+            var auctions = _auctionService.GetAllByCreator(user);
+            List<LotDto> lots = new List<LotDto>();
+            foreach (var a in auctions)
+            {
+                var list = _lotService.GetByAuctionId(a.Id);
+                foreach (var l in list) 
+                {
+                    if (l.Expiring < DateTime.Now)
+                    {
+                        string email = _userService.GetByIdAsync(l.BidUserId).Result.Email;
+                        l.BidUserEmail = email;
+                        lots.Add(l);
+                    }
+                }
+            }
+            LotModel model = new LotModel(lots);
             return View(model);
         }
         [HttpDelete("{id}")]

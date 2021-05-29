@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using AutoMapper;
 using Data_Access_Layer;
 using Data_Access_Layer.Entities;
@@ -32,6 +33,11 @@ namespace Business_Logic_Layer.Services
         public async Task<IEnumerable<AuctionDto>> GetAllAsync()
         {
             var auctions = await _dbContext.Auctions.ToListAsync();
+            return _mapper.Map<IEnumerable<AuctionDto>>(auctions);
+        }
+        public IEnumerable<AuctionDto> GetAllByCreator(int id)
+        {
+            var auctions = _dbContext.Auctions.AsNoTracking().ToList().Where(x => x.UserId == id);
             return _mapper.Map<IEnumerable<AuctionDto>>(auctions);
         }
         public async Task UpdateAsync() 
