@@ -10,6 +10,6 @@ services:
     image: ${DOCKER_REGISTRY-}webauction
     build:
       context: .
-      dockerfile: WEB-Auction\Dockerfile
+      dockerfile: WEB-Auction/Dockerfile
     depends_on:
       - db
